@@ -3,6 +3,10 @@
     padding: 0;
     text-decoration: none;
     color: black;
+    img{
+        height: 100%;
+        width: 100%;
+    }
 }
 
 .navbar{
@@ -121,4 +125,262 @@
     }
 }
 
+
+//Home Main
+
+.main{
+    height: 100vh;
+    width: 100vw;
+    .gallery{
+        margin: 50px;
+        padding: 30px;
+
+        .gallery_container{
+            display: flex;
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+
+
+            .gallery_left{
+                 max-height: 1000px;
+                 max-width: 600px;
+                 padding-right: 20px;
+                 img{
+                    border-radius: 40px;
+                 }
+
+
+
+            }
+
+            .gallery_right{
+                
+                max-height: 1000px;
+                max-width: 600px;
+                padding-left : 20px;
+                img{
+                    border-radius: 40px;
+                 }
+            }
+
+        }
+
+
+    }
+
+
+}
+
+
+//Products
+
+.products_body{
+    display: flex;
+    margin: 20px;
+    .left_products_body{
+        height: 100vh;
+        width: 20vw;
+    }
+
+    .right_products_body{
+        height: 100vh;
+        width: 80vw;
+        margin: 20px;
+
+        .cards_container{
+            display: flex;
+            
+
+            .card_1{
+                height: 500px;
+                width: 300px;
+                border-radius: 20px;
+                border: solid 1px grey;
+                margin: 0 50px 0 50px;
+                
+
+                .top_card{
+                    padding: 5px;
+                    .container.img{
+                        max-height: 200px;
+
+                    }
+
+                }
+
+                .bottom_card{
+                    max-height: 100%;
+                    max-width: 100%;
+                    .bottom_card_content{
+                        height: 100%;
+                        width: 100%;
+                        
+                        .product_name{
+                            text-align: center;
+                            margin: 5px;
+                            padding: 5px;
+                            font-size: 18px;
+                            font-weight: 800;
+                            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                        }
+                        
+                        .product_info{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 10px;
+                            max-width: 100%;
+                            max-height: 100%;
+                            .price{
+                                display: inline-block;
+                                padding: 10px;
+                                font-size: 16px;
+                                font-weight: 600;
+                            }
+                            .add_cart{
+                                display: inline-block;
+                                padding: 10px;
+                                border-radius: 40px;
+                                background-image: linear-gradient(to bottom, #e0e0e0, #d4d4d4, #c8c8c8, #bdbdbd, #b1b1b1);
+                                width: 90%;
+                                text-align: center;
+                                font-weight: 700;
+                                margin-top: 10px;
+                                cursor: pointer;
+                            }   
+                        }
+                    }
+                }
+            }
+
+            .card_2{
+                height: 500px;
+                width: 300px;
+                border-radius: 20px;
+                border: solid 1px grey;
+                margin: 0 50px 0 50px;
+                
+
+                .top_card{
+                    padding: 5px;
+                    .container.img{
+                        max-height: 200px;
+
+                    }
+
+                }
+
+                .bottom_card{
+                    max-height: 100%;
+                    max-width: 100%;
+                    .bottom_card_content{
+                        height: 100%;
+                        width: 100%;
+                        
+                        .product_name{
+                            text-align: center;
+                            margin: 5px;
+                            padding: 5px;
+                            font-size: 18px;
+                            font-weight: 800;
+                            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                        }
+                        
+                        .product_info{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 10px;
+                            max-width: 100%;
+                            max-height: 100%;
+                            .price{
+                                display: inline-block;
+                                padding: 10px;
+                                font-size: 16px;
+                                font-weight: 600;
+                            }
+                            .add_cart{
+                                display: inline-block;
+                                padding: 10px;
+                                border-radius: 40px;
+                                background-image: linear-gradient(to bottom, #e0e0e0, #d4d4d4, #c8c8c8, #bdbdbd, #b1b1b1);
+                                width: 90%;
+                                text-align: center;
+                                font-weight: 700;
+                                margin-top: 10px;
+                                cursor: pointer;
+                            }   
+                        }
+                    }
+                }
+            }
+
+            .card_3{
+                height: 500px;
+                width: 300px;
+                border-radius: 20px;
+                border: solid 1px grey;
+                margin: 0 50px 0 50px;
+                
+
+                .top_card{
+                    padding: 5px;
+                    .container.img{
+                        max-height: 200px;
+
+                    }
+
+                }
+
+                .bottom_card{
+                    max-height: 100%;
+                    max-width: 100%;
+                    .bottom_card_content{
+                        height: 100%;
+                        width: 100%;
+                        
+                        .product_name{
+                            text-align: center;
+                            margin: 5px;
+                            padding: 5px;
+                            font-size: 18px;
+                            font-weight: 800;
+                            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                        }
+                        
+                        .product_info{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 10px;
+                            max-width: 100%;
+                            max-height: 100%;
+                            .price{
+                                display: inline-block;
+                                padding: 10px;
+                                font-size: 16px;
+                                font-weight: 600;
+                            }
+                            .add_cart{
+                                display: inline-block;
+                                padding: 10px;
+                                border-radius: 40px;
+                                background-image: linear-gradient(to bottom, #e0e0e0, #d4d4d4, #c8c8c8, #bdbdbd, #b1b1b1);
+                                width: 90%;
+                                text-align: center;
+                                font-weight: 700;
+                                margin-top: 10px;
+                                cursor: pointer;
+                            }   
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
