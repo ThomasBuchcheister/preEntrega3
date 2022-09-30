@@ -5,7 +5,8 @@ const envio = 800;
 
 
 console.log("Bienvenido a D10S Indumentaria!");
-
+alert("Bienvenido a D10S Indumentaria!");
+alert("Los productos disponibles son: 1- Argentina titular 1994  2- Argentina titular 1990  3- Argentina titular 1986")
 let producto = parseInt(prompt("Que producto desea comprar?"));
 let cantidad = parseInt(prompt("Cuantas unidades quiere?"));
 let total;
