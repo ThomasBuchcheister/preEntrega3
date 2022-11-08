@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../style/style.css">
-    <title>Iniciar sesion</title>
+    <title>Products</title>
 </head>
 <body>
     
@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <div class="body">
+    <div class="bodyProducts">
         <!--Menu-->
         <div id="menu">
             <ul id="menuItems">
@@ -87,40 +87,111 @@
         </div>
         <!--Fin login-->
 
-        <body class="registerPage">
-            <div class="containerRegisterPage">
 
-                <div class="itemsRegister">
+        <!--Productos-->
 
-                    <h1>Bienvenido a D10S Indumentaria!</h1>
-                    <div class="dataRegister">
-                        <label for="">Usuario:</label>
-                        <input type="text" id="nombreUsuario">
+        <div class="container">
 
-                        <label for="">Correo</label>
-                        <input type="email" id="correoUsuario">
+            <div class="containerCards">
 
-                        <label for="">Contraseña:</label>
-                        <input type="password" id="contrasenaUsuario">
+                <div id="card1" class="card">
+                    <div class="cardContent">
+                        <img src="../images/camisetas/titular_1990.png" alt="titular_1990">
+                        <div class="cardImg">
+                           
+                        </div>
+                        <div class="cardInfo">
+                            <h5 class="nombreProducto">Camiseta titular Argentina 1990</h5>
+                            <span class="precioItem">$5500</span>
+                            <div class="agregarCarrito">Agregar al carrito</div>
+                            <small id="id">1</small>
+                        </div>
                     </div>
-                    
-                    <div class="buttonsRegisterPage">
-                        <button id="register">Registrarse</button>
-                        <button id="loginRegister"><a href="../html/login.html">Iniciar sesion</a></button>
-                        
+                </div>
+
+                <div id="card2" class="card">
+                    <div class="cardContent">
+                        <div class="cardImg">
+                            <img src="../images/camisetas/titular_1994.png" alt="titular_1994">
+                        </div>
+                        <div class="cardInfo">
+                            <h5 class="nombreProducto">Camiseta titular Argentina 1994</h5>
+                            <span class="precioItem">$6000</span>
+                            <div class="agregarCarrito">Agregar al carrito</div>
+                            <small id="id">2</small>
+                        </div>
                     </div>
+                </div>
 
+                <div id="card3" class="card">
+                    <div class="cardContent">
+                        <div class="cardImg">
+                            <img src="../images/camisetas/titular_1986.png" alt="titular_1986">
+                        </div>
+                        <div class="cardInfo">
+                            <h5 class="nombreProducto">Camiseta titular Argentina 1986</h5>
+                            <span class="precioItem">$7000</span>
+                            <div class="agregarCarrito">Agregar al carrito</div>
+                            <small id="id">3</small>
+                        </div>
+                    </div>
+                </div>
 
+                <div id="card4" class="card">
+                    <div class="cardContent">
+                        <div class="cardImg">
+                            <img src="../images/camisetas/alternativa_1990.png" alt="alternativa_1990">
+                        </div>
+                        <div class="cardInfo">
+                            <h5 class="nombreProducto">Camiseta alternativa Argentina 1990</h5>
+                            <span class="precioItem">$6300</span>
+                            <div class="agregarCarrito">Agregar al carrito</div>
+                            <small id="id">4</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="card5" class="card">
+                    <div class="cardContent">
+                        <div class="cardImg">
+                            <img src="../images/camisetas/alternativa_1994.png" alt="alternativa_1994">
+                        </div>
+                        <div class="cardInfo">
+                            <h5 class="nombreProducto">Camiseta alternativa Argentina 1994</h5>
+                            <span class="precioItem">$9000</span>
+                            <div class="agregarCarrito">Agregar al carrito</div>
+                            <small id="id">5</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="card6" class="card">
+                    <div class="cardContent">
+                        <div class="cardImg">
+                            <img src="../images/camisetas/alternativa_1986.png" alt="alternativa_1986">
+                        </div>
+                        <div class="cardInfo">
+                            <h5 class="nombreProducto">Camiseta alternativa Argentina 1986</h5>
+                            <span class="precioItem">$8500</span>
+                            <div class="agregarCarrito">Agregar al carrito</div>
+                            <small id="id">6</small>
+                        </div>
+                    </div>
                 </div>
 
 
-
-
-
             </div>
-        </body>
 
 
-    <script src="../products.js"></script>
+
+
+        </div>
+
+
+
+    </div>
+
+
+   <script src="../products.js"></script>
 </body>
 </html>
