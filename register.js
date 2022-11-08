@@ -33,7 +33,7 @@ function registro_usuario(){
                         icon: 'error',
                         title: 'Oops...',
                         text: 'El correo ya fue registrado.',
-                        footer: '<a href="html/login.html">Inicia sesion con ese correo</a>'
+                        footer: '<a href="login.html">Inicia sesion con ese correo</a>'
                         
                     })
                     
