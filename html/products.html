@@ -4,125 +4,194 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../style/style.css">
-    <script defer src="../products.js"></script>
     <title>Products</title>
 </head>
 <body>
-
+    
     <div class="navbar">
-        <div class="content_navbar">
-            <div class="left_nav">
-                <div class="content_left_nav">
-                    <div class="logo"><img src="../images/logo1.png" alt="logo"></div>
-                </div>
+        
+        <div class="leftNav">
+            <div id="menuToggle">
+
+                
+                
+                <span></span>
+                <span></span>
+                <span></span>
+                
+               
+
             </div>
 
-            <div class="mid_nav">
-                <div class="content_mid_nav">
-                    
-                    <div class="home"><a href="../index.html">Home</a></div>
-                    <div class="products"><a href="products.html">Products</a></div>
-                    <div class="about"><a href="about.html">About Us</a></div>
+        </div>
 
-                </div>
+        <div class="midNav">
+            <div class="logo">
+                <a href="products.html"><img src="../images/logo1.png" alt="logo"></a>
             </div>
+        </div>
 
-            <div class="right_nav">
-                <div class="content_right_nav">
-                    <div class="login--icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-                            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
-                        </svg>
-                    </div>
-                    <div class="cart--icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
-                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
-                        </svg>
-                    </div>
-                </div>
+        <div class="rightNav">
+            <div id="mostrarCarrito" class="mostrarCarrito">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                </svg>
             </div>
+            <div id="mostrarLogin" class="mostrarLogin">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                  </svg>
+            </div>
+            
+            
         </div>
     </div>
 
-
-    <div class="products_body">
-
-        <div class="left_products_body">
-
+    <div class="bodyProducts">
+        <!--Menu-->
+        <div id="menu">
+            <ul id="menuItems">
+                <a href="#"><li>Inicio</li></a>
+                <a href="#"><li>Productos</li></a>
+                <a href="#"><li>Sobre nosotros</li></a>
+            </ul>
         </div>
+        <!--Fin menu-->
+        <!--Carrito-->
+        <div id="carritoItems">
+            <div class="carrito">
+                <div class="carritoInfo">
+                   <h6>Total: </h6>
+                </div>
+                <div class="carritoProductos">
+                    
+                </div>
+            </div>
+            
+        </div>
+        <!--Fin carrito-->
 
-        <div class="right_products_body">
+        <!--Login-->
+        <div id="loginButtonBody">
+            <div class="loginButtonContainer">
+                <div class="buttons">
+                    <button id="loginLink"><a href="../html/login.html">Iniciar sesion</a></button>
+                    <button id="registerLink"><a href="../html/register.html">Registrarme</a></button>
+                        
+                </div>
+                
+            </div>
+        </div>
+        <!--Fin login-->
 
-            <div class="cards_container">
 
-                <div class="card_1">
+        <!--Productos-->
 
-                    <div class="top_card">
-                        <div class="container_img">
+        <div class="container">
+
+            <div class="containerCards">
+
+                <div id="card1" class="card">
+                    <div class="cardContent">
+                        <img src="../images/camisetas/titular_1990.png" alt="titular_1990">
+                        <div class="cardImg">
+                           
+                        </div>
+                        <div class="cardInfo">
+                            <h5 class="nombreProducto">Camiseta titular Argentina 1990</h5>
+                            <span class="precioItem">$5500</span>
+                            <div class="agregarCarrito">Agregar al carrito</div>
+                            <small id="id">1</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="card2" class="card">
+                    <div class="cardContent">
+                        <div class="cardImg">
                             <img src="../images/camisetas/titular_1994.png" alt="titular_1994">
                         </div>
-                    </div>
-
-                    <div class="bottom_card">
-                        <div class="bottom_card_content">
-                            <div class="product_name">Camiseta titular Argentina 1994</div>
-                            <div class="product_info">
-                                <div class="price">$5.500</div>
-                                <div class="add_cart">Agregar al carrito</div>
-                            </div>
+                        <div class="cardInfo">
+                            <h5 class="nombreProducto">Camiseta titular Argentina 1994</h5>
+                            <span class="precioItem">$6000</span>
+                            <div class="agregarCarrito">Agregar al carrito</div>
+                            <small id="id">2</small>
                         </div>
                     </div>
-
                 </div>
 
-                <div class="card_2">
-
-                    <div class="top_card">
-                        <div class="container_img">
-                            <img src="../images/camisetas/titular_1990.png" alt="titular_1990">
-                        </div>
-                    </div>
-
-                    <div class="bottom_card">
-                        <div class="bottom_card_content">
-                            <div class="product_name">Camiseta titular Argentina 1990</div>
-                            <div class="product_info">
-                                <div class="price">$5.000</div>
-                                <div class="add_cart">Agregar al carrito</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="card_3">
-
-                    <div class="top_card">
-                        <div class="container_img">
+                <div id="card3" class="card">
+                    <div class="cardContent">
+                        <div class="cardImg">
                             <img src="../images/camisetas/titular_1986.png" alt="titular_1986">
                         </div>
-                    </div>
-
-                    <div class="bottom_card">
-                        <div class="bottom_card_content">
-                            <div class="product_name">Camiseta titular Argentina 1986</div>
-                            <div class="product_info">
-                                <div class="price">$6.000</div>
-                                <div class="add_cart">Agregar al carrito</div>
-                            </div>
+                        <div class="cardInfo">
+                            <h5 class="nombreProducto">Camiseta titular Argentina 1986</h5>
+                            <span class="precioItem">$7000</span>
+                            <div class="agregarCarrito">Agregar al carrito</div>
+                            <small id="id">3</small>
                         </div>
                     </div>
-
                 </div>
+
+                <div id="card4" class="card">
+                    <div class="cardContent">
+                        <div class="cardImg">
+                            <img src="../images/camisetas/alternativa_1990.png" alt="alternativa_1990">
+                        </div>
+                        <div class="cardInfo">
+                            <h5 class="nombreProducto">Camiseta alternativa Argentina 1990</h5>
+                            <span class="precioItem">$6300</span>
+                            <div class="agregarCarrito">Agregar al carrito</div>
+                            <small id="id">4</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="card5" class="card">
+                    <div class="cardContent">
+                        <div class="cardImg">
+                            <img src="../images/camisetas/alternativa_1994.png" alt="alternativa_1994">
+                        </div>
+                        <div class="cardInfo">
+                            <h5 class="nombreProducto">Camiseta alternativa Argentina 1994</h5>
+                            <span class="precioItem">$9000</span>
+                            <div class="agregarCarrito">Agregar al carrito</div>
+                            <small id="id">5</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="card6" class="card">
+                    <div class="cardContent">
+                        <div class="cardImg">
+                            <img src="../images/camisetas/alternativa_1986.png" alt="alternativa_1986">
+                        </div>
+                        <div class="cardInfo">
+                            <h5 class="nombreProducto">Camiseta alternativa Argentina 1986</h5>
+                            <span class="precioItem">$8500</span>
+                            <div class="agregarCarrito">Agregar al carrito</div>
+                            <small id="id">6</small>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
+
+
+
+
         </div>
+
+
+
     </div>
 
-    <footer>
 
-    </footer>
-
-    
+   <script src="../products.js"></script>
 </body>
 </html>
