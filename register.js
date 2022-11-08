@@ -33,7 +33,7 @@ function registro_usuario(){
                         icon: 'error',
                         title: 'Oops...',
                         text: 'El correo ya fue registrado.',
-                        footer: '<a href="../html/login.html">Inicia sesion con ese correo</a>'
+                        footer: '<a href="html/login.html">Inicia sesion con ese correo</a>'
                         
                     })
                     
@@ -59,7 +59,7 @@ function registro_usuario(){
                     arreglo_usuarios.push(usuario);
                     let usuariosJSON = JSON.stringify(arreglo_usuarios);
                     localStorage.setItem("usuarios" , usuariosJSON);
-                    setTimeout(function(){ location.replace('html/login.html') }, 5000);
+                    setTimeout(function(){ location.replace('/html/login.html') }, 5000);
                     break
                     
                 }
