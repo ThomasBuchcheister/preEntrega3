@@ -78,66 +78,165 @@ function renderCarrito(){
 
 function carritoTotal(){
 
-    fetch("envio.json")
-        .then(response=>response.json())
-        .then(data=>{
 
-            let envio = data[0].envio
+let btn_login = document.getElementById('mostrarLogin');
 
-            let total = 0
-             const totalCarrito = document.querySelector('.totalCarrito')
-            carrito.forEach((item) =>{
-            const precio = Number(item.precio.replace("$", ''))
-            total = total + precio*item.cantidad + envio
+btn_login.addEventListener('click', function(){
+
+    let login = document.getElementById('loginButtonBody');
+
+    if(loginButtonBody.style.display != "none"){
+
+        loginButtonBody.style.display = "none";
+    }
+    else{
+        loginButtonBody.style.display = "flex";
+    }
+
+
+
+})
+// fin toggle login
+
+//btn_registro
+
+
+
+
+
+
+
+
+let arreglo_usuarios = [];
+
+
+function registro_usuario(){
+    let nombre_usuario = document.getElementById('nombreUsuario');
+    let correo_usuario = document.getElementById('correoUsuario');
+    let contrasena_usuario = document.getElementById('contrasenaUsuario');
+
+
+    let usuario = { nombre:nombre_usuario.value, email:correo_usuario.value, contrasena:contrasena_usuario.value};
+    
+    
+
+
+    if (localStorage.length != 0){
+
+        let recuperando_arreglo = localStorage.getItem("usuarios");
+        recuperando_arreglo = JSON.parse(recuperando_arreglo);
+
+        for (let usuario_arreglo of recuperando_arreglo){
             
+            if(usuario.nombre == usuario_arreglo.nombre){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'El nombre de usuario ya esta registrado.',
+                    
+                })
+                
+            }
+            else{
+                if(usuario.email == usuario_arreglo.email){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'El correo ya fue registrado.',
+                        footer: '<a href="../html/login.html">Inicia sesion con ese correo</a>'
+                        
+                    })
+                    
+                }
+
+                else{
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 5000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                      })
+                      
+                      Toast.fire({
+                        icon: 'success',
+                        title: 'Te registraste correctamente.'
+                    })
+                    arreglo_usuarios.push(usuario);
+                    let usuariosJSON = JSON.stringify(arreglo_usuarios);
+                    localStorage.setItem("usuarios" , usuariosJSON);
+                    setTimeout(function(){ location.replace('../html/login.html') }, 5000);
+                    break
+                    
+                }
+                
+            }
+        }
+        }
+        
+    else{
+        arreglo_usuarios.push(usuario);
+        let usuariosJSON = JSON.stringify(arreglo_usuarios);
+        localStorage.setItem("usuarios" , usuariosJSON);
+
+    }
+
+
+
+}
+
+
+
+function validar_usuario(){
+    
+    let nombre_usuario = document.getElementById('nombreUsuario');
+    let contrasena_usuario = document.getElementById('contrasenaUsuario');
+
+    let recuperando_arreglo = localStorage.getItem("usuarios");
+    recuperando_arreglo = JSON.parse(recuperando_arreglo);
+
+    console.log(recuperando_arreglo);
+    
+    for(let usuario of recuperando_arreglo){
+        
+        
+        if(nombre_usuario.value == usuario.nombre && contrasena_usuario.value == usuario.contrasena){
+
+            console.log("render del carrito");
+        }
+
+        else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Los datos ingresados no coinciden con ninguno de nuestros usuarios registrados.',
+                
             })
-
-            totalCarrito.innerHTML = `Total + Envio $${total}`
-            addLocalStorage();
-        })
+        }
+    }   
 
     
 
+        
 }
 
-function borrarItemsCarrito(e){
-    const buttonDelete = e.target;
-    const padre = buttonDelete.closest(".itemCarrito");
-    const titulo = padre.querySelector('.nombreCarrito').textContent
-    for(let i=0; i<carrito.length; i++){
-        if(carrito[i].titulo.trim() === titulo.trim()){
-            carrito.splice(i, 1)
-        }
-    }
-    padre.remove();
-    carritoTotal();
-    
-}
+const btn_registro = document.getElementById("register");
 
-function sumaCantidad(e){
-    const sumaInput = e.target
-    const tr = sumaInput.closest('.itemCarrito')
-    const titulo = tr.querySelector('.nombreCarrito').textContent;
-    carrito.forEach(item => {
-        if(item.titulo.trim() === titulo){
-            sumaInput.value < 1 ?   (sumaInput.value = 1) : sumaInput.value;
-            item.cantidad = sumaInput.value;
-            carritoTotal();
-        }
-    })
+btn_registro.addEventListener('click' , registro_usuario);
 
-}
+const btn_ingresar = document.getElementById("login");
 
-function addLocalStorage(){
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-}
+btn_ingresar.addEventListener('click' , validar_usuario);
 
-window.onload = function(){
-    const storage = JSON.parse(localStorage.getItem('carrito'));
-    if(storage){
-        carrito = storage;
-        renderCarrito();
-    }
 
-}
+
+
+
+
+
+
 
