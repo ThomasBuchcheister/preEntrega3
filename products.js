@@ -1,282 +1,143 @@
-//Toggle carrito
 
+// carrito
 
-let btn_carrito = document.getElementById('mostrarCarrito');
-
-btn_carrito.addEventListener('click', function(){
-
-    let carrito = document.getElementById('carrito');
-
-    if(carritoItems.style.display != "none"){
-
-        carritoItems.style.display = "none";
-    }
-    else{
-        carritoItems.style.display = "flex";
-    }
-
-
-
-})
-// fin toggle carrito
-
-// Agregar al carrito
-
+const clickButton = document.querySelectorAll('.agregarCarrito');
+const carritoItemsBody = document.querySelector('.carritoProductosss')
 let carrito = [];
 
-let btn_compra = document.querySelectorAll('.agregarCarrito');
-
-for(let boton of btn_compra){
-
-    boton.addEventListener("click" , agregarAlCarrito )
-}
-
-
-
-function agregarAlCarrito(e){
-
-    let hijo = e.target;
-    let padre = hijo.parentNode;
-    let abuelo = padre.parentNode;
-
-    let nombreProducto = padre.querySelector("h5").textContent;
-    let precioItem = padre.querySelector("span").textContent;
-    let cardImg = abuelo.querySelector("img").src;
-    let id = padre.querySelector("small").textContent;
-      
-
-    let producto = {
-
-        nombre: nombreProducto,
-        precio: precioItem,
-        img: cardImg,
-        cantidad: 1,
-        id: id
-
-    }
-    
-    
-    carrito.push(producto);
-
-    mostrar_carrito(producto);
-
-    
-
- 
-
-
-    
-}
-  
-function mostrar_carrito( producto ){
-
-
-
-
-let fila = document.createElement("div");
-                 fila.innerHTML = `<div class="imgCarrito"><img src="${producto.img}"></div>
-                          <div class="nombreCarrito">${producto.nombre}</div>
-                          <div class="infoCarrito"><div class="cantidadCarrito">${producto.cantidad}</div><div>${producto.precio}</div></div>
-                          <div class="button"><button class="borrar_elemento">Borrar</div>`;
-        
-           
-                     
-            let tabla = document.querySelector(".carritoProductos");
-            tabla.append(fila);
-    
-
-
-
-            let btn_borrar = document.querySelectorAll(".borrar_elemento");
-
-
-            for( let boton of btn_borrar){
-
-                boton.addEventListener("click" , borrar_producto);
-            }
-
-                    
-                
-            
-
-
-
-function borrar_producto(e){
-
-    
-    let abuelo = e.target.parentNode.parentNode;
-
-    abuelo.remove();
-
-    
-    
-
-
-
-}
-}
-
-//Toggle login
-
-
-let btn_login = document.getElementById('mostrarLogin');
-
-btn_login.addEventListener('click', function(){
-
-    let login = document.getElementById('loginButtonBody');
-
-    if(loginButtonBody.style.display != "none"){
-
-        loginButtonBody.style.display = "none";
-    }
-    else{
-        loginButtonBody.style.display = "flex";
-    }
-
-
-
+clickButton.forEach(btn => {
+    btn.addEventListener('click', addCarritoItem );
 })
-// fin toggle login
-
-//btn_registro
 
 
+function addCarritoItem(e){
+    const button = e.target;
+    const item = button.closest('.card');
 
+    
+    const itemTitle = item.querySelector('.nombreProducto').textContent;
+    const itemPrice = item.querySelector('.precioItem').textContent;
+    const itemImage = item.querySelector('.imagen').src;
 
-
-
-
-
-let arreglo_usuarios = [];
-
-
-function registro_usuario(){
-    let nombre_usuario = document.getElementById('nombreUsuario');
-    let correo_usuario = document.getElementById('correoUsuario');
-    let contrasena_usuario = document.getElementById('contrasenaUsuario');
-
-
-    let usuario = { nombre:nombre_usuario.value, email:correo_usuario.value, contrasena:contrasena_usuario.value};
+    const newItem = {
+        titulo: itemTitle,
+        precio: itemPrice,
+        imagen: itemImage,
+        cantidad: 1
+    }
     
     
+    addCarritoItem(newItem)
+    
+    function addCarritoItem(newItem){
+        const inputElemento = carritoItemsBody.getElementsByClassName('cantidadCarrito')
+        for(let i = 0; i < carrito.length; i++){
+            if(carrito[i].titulo.trim() === newItem.titulo.trim()){
+                carrito[i].cantidad++;
+                const inputValue = inputElemento[i];
+                inputValue.value++;
+                carritoTotal();
+                return null;
+            }
+        }
 
 
-    if (localStorage.length != 0){
+        carrito.push(newItem);
+        renderCarrito();
+    }
+}
 
-        let recuperando_arreglo = localStorage.getItem("usuarios");
-        recuperando_arreglo = JSON.parse(recuperando_arreglo);
 
-        for (let usuario_arreglo of recuperando_arreglo){
+
+function renderCarrito(){
+    
+    
+    carritoItemsBody.innerHTML = ''
+    carrito.map(item => {
+        const div = document.createElement('div');
+        div.classList.add('itemCarrito');
+        const content = `
+                        <div class="imgCarrito"><img src="${item.imagen}"></div>
+                        <div class="nombreCarrito">${item.titulo}</div>
+                        <div class="infoCarrito">
+                            <input class="cantidadCarrito" type="number" min="1" max="5" value="${item.cantidad}"/>
+                            <div class="precioCarrito">${item.precio}</div>
+                        </div>
+                        <div class="button"><button class="borrar_elemento">Borrar</div>
+        `
+
+        div.innerHTML = content;
+        carritoItemsBody.append(div)
+
+        div.querySelector('.borrar_elemento').addEventListener('click', borrarItemsCarrito)
+        div.querySelector('.cantidadCarrito').addEventListener('change' , sumaCantidad);
+    })
+
+    carritoTotal();
+}
+
+function carritoTotal(){
+
+    fetch("envio.json")
+        .then(response=>response.json())
+        .then(data=>{
+
+            let envio = data[0].envio
+
+            let total = 0
+             const totalCarrito = document.querySelector('.totalCarrito')
+            carrito.forEach((item) =>{
+            const precio = Number(item.precio.replace("$", ''))
+            total = total + precio*item.cantidad + envio
             
-            if(usuario.nombre == usuario_arreglo.nombre){
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'El nombre de usuario ya esta registrado.',
-                    
-                })
-                
-            }
-            else{
-                if(usuario.email == usuario_arreglo.email){
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'El correo ya fue registrado.',
-                        footer: '<a href="../html/login.html">Inicia sesion con ese correo</a>'
-                        
-                    })
-                    
-                }
+            })
 
-                else{
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 5000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                          toast.addEventListener('mouseenter', Swal.stopTimer)
-                          toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                      })
-                      
-                      Toast.fire({
-                        icon: 'success',
-                        title: 'Te registraste correctamente.'
-                    })
-                    arreglo_usuarios.push(usuario);
-                    let usuariosJSON = JSON.stringify(arreglo_usuarios);
-                    localStorage.setItem("usuarios" , usuariosJSON);
-                    setTimeout(function(){ location.replace('../html/login.html') }, 5000);
-                    break
-                    
-                }
-                
-            }
-        }
-        }
-        
-    else{
-        arreglo_usuarios.push(usuario);
-        let usuariosJSON = JSON.stringify(arreglo_usuarios);
-        localStorage.setItem("usuarios" , usuariosJSON);
+            totalCarrito.innerHTML = `Total + Envio $${total}`
+            addLocalStorage();
+        })
 
+    
+
+}
+
+function borrarItemsCarrito(e){
+    const buttonDelete = e.target;
+    const padre = buttonDelete.closest(".itemCarrito");
+    const titulo = padre.querySelector('.nombreCarrito').textContent
+    for(let i=0; i<carrito.length; i++){
+        if(carrito[i].titulo.trim() === titulo.trim()){
+            carrito.splice(i, 1)
+        }
+    }
+    padre.remove();
+    carritoTotal();
+    
+}
+
+function sumaCantidad(e){
+    const sumaInput = e.target
+    const tr = sumaInput.closest('.itemCarrito')
+    const titulo = tr.querySelector('.nombreCarrito').textContent;
+    carrito.forEach(item => {
+        if(item.titulo.trim() === titulo){
+            sumaInput.value < 1 ?   (sumaInput.value = 1) : sumaInput.value;
+            item.cantidad = sumaInput.value;
+            carritoTotal();
+        }
+    })
+
+}
+
+function addLocalStorage(){
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+window.onload = function(){
+    const storage = JSON.parse(localStorage.getItem('carrito'));
+    if(storage){
+        carrito = storage;
+        renderCarrito();
     }
 
-
-
 }
-
-
-
-function validar_usuario(){
-    
-    let nombre_usuario = document.getElementById('nombreUsuario');
-    let contrasena_usuario = document.getElementById('contrasenaUsuario');
-
-    let recuperando_arreglo = localStorage.getItem("usuarios");
-    recuperando_arreglo = JSON.parse(recuperando_arreglo);
-
-    console.log(recuperando_arreglo);
-    
-    for(let usuario of recuperando_arreglo){
-        
-        
-        if(nombre_usuario.value == usuario.nombre && contrasena_usuario.value == usuario.contrasena){
-
-            console.log("render del carrito");
-        }
-
-        else{
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Los datos ingresados no coinciden con ninguno de nuestros usuarios registrados.',
-                
-            })
-        }
-    }   
-
-    
-
-        
-}
-
-const btn_registro = document.getElementById("register");
-
-btn_registro.addEventListener('click' , registro_usuario);
-
-const btn_ingresar = document.getElementById("login");
-
-btn_ingresar.addEventListener('click' , validar_usuario);
-
-
-
-
-
-
-
-
 

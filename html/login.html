@@ -13,23 +13,21 @@
     <div class="navbar">
         
         <div class="leftNav">
-            <div id="menuToggle">
-
+            <div class="leftNav">
                 
-                
-                <span></span>
-                <span></span>
-                <span></span>
-                
-               
-
+                <div  id="mostrarMenu" class="hamburger-lines">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </div>
+          
             </div>
 
         </div>
 
         <div class="midNav">
             <div class="logo">
-                <a href="products.html"><img src="../images/logo1.png" alt="logo"></a>
+                <a href="../index.html"><img src="../images/logo1.png" alt="logo"></a>
             </div>
         </div>
 
@@ -52,22 +50,25 @@
 
     <div class="body">
         <!--Menu-->
-        <div id="menu">
-            <ul id="menuItems">
-                <a href="#"><li>Inicio</li></a>
-                <a href="#"><li>Productos</li></a>
-                <a href="#"><li>Sobre nosotros</li></a>
+        <div id="menu" class="menu">
+            <ul id="menuItems" class="menuItems">
+                <a href="../index.html"><li>Productos</li></a>
+                <a href="/html/about.html"><li>Sobre nosotros</li></a>
             </ul>
         </div>
         <!--Fin menu-->
-        <!--Carrito-->
-        <div id="carritoItems">
+        <!--Inicio Carrito-->
+
+        
+        <div id="carritoContainer">
             <div class="carrito">
                 <div class="carritoInfo">
-                   <h6>Total: </h6>
+                    <h6 class="totalCarrito">Total: $0</h6>
                 </div>
-                <div class="carritoProductos">
+                <div id="carritoProductosss" class="carritoProductosss">
                     
+    
+    
                 </div>
             </div>
             
@@ -75,7 +76,7 @@
         <!--Fin carrito-->
 
         <!--Login-->
-        <div id="loginButtonBody">
+        <div class="loginButtonBody" id="loginButtonBody">
             <div class="loginButtonContainer">
                 <div class="buttons">
                     <button id="loginLink"><a href="../html/login.html">Iniciar sesion</a></button>
@@ -92,17 +93,17 @@
 
                 <div class="itemsLogin">
 
-                    <h1>Bienvenido a D10S Indumentaria!</h1>
+                    <h1>BIENVENIDO A D10S INDUMENTARIA!</h1>
                     <div class="dataLogin">
                         <label for="">Usuario:</label>
-                        <input type="text" id="nombreUsuario">
+                        <input type="text" id="nombreUsuario" placeholder="NOMBRE DE USUARIO">
 
                         <label for="">Contraseña:</label>
-                        <input type="password" id="contrasenaUsuario">
+                        <input type="password" id="contrasenaUsuario" placeholder="CONTRASEÑA">
                     </div>
                     
                     <div class="buttonsLoginPage">
-                        <button id="login">Iniciar Sesion</button>
+                        <button id="loginValidation">Iniciar Sesion</button>
                         <button id="registerLogin"><a href="../html/register.html">Registrarse</a></button>
                     </div>
 
@@ -118,5 +119,8 @@
 
 
     <script src="../products.js"></script>
+    <script src="../login.js"></script>
+    <script src="../botones.js"></script>
+    
 </body>
 </html>
