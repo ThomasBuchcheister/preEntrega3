@@ -63,5 +63,3 @@ btn_menu.addEventListener('click', function(){
 
 })
 
-
-//
